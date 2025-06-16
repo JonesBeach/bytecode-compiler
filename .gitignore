@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+# Keeping dist included so we can include this in fromscratchcode.com directly from GitHub.
 !dist
 dist-ssr
 *.local
