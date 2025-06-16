@@ -6,7 +6,7 @@
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "files": ["dist"],
+  "files": ["dist", "pkg"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
