@@ -1,8 +1,11 @@
 {
-  "name": "bytecode-compiler",
+  "name": "@fromscratchcode/bytecode-compiler",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": ["dist"],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +13,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
