@@ -3,7 +3,8 @@ import init, { compile } from '../pkg/memphis.js'
 
 function App() {
   const [code, setCode] = useState('y = 42')
-  const [output, setOutput] = useState('')
+  const [error, setError] = useState('')
+  const [compiled, setCompiled] = useState(null)
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -13,10 +14,12 @@ function App() {
   useEffect(() => {
     if (!ready) return
     try {
-      const result = compile(code)
-      setOutput(result.names.join(', '))
+      const compiled = compile(code)
+      setCompiled(compiled)
+      setError('')
     } catch (e) {
-      setOutput(`Error: ${e.message}`)
+      setCompiled(null)
+      setError(`Error: ${e.message}`)
     }
   }, [code, ready])
 
@@ -31,8 +34,13 @@ function App() {
         placeholder="Enter Python code here"
         style={{ fontFamily: 'monospace', fontSize: '1rem', width: '100%' }}
       />
-      <h2>Detected Names</h2>
-      <pre>{output}</pre>
+      {error}
+      <h2>Detected Names (globals)</h2>
+      <pre>{compiled?.names.join('\n')}</pre>
+      <h2>Detected Bytecode</h2>
+      <pre>{compiled?.bytecode.join('\n')}</pre>
+      <h2>Detected Constants</h2>
+      <pre>{compiled?.constants.join('\n')}</pre>
     </div>
   )
 }

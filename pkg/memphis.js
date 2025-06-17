@@ -166,6 +166,15 @@ export class WasmCodeObject {
     /**
      * @returns {any[]}
      */
+    get bytecode() {
+        const ret = wasm.wasmcodeobject_bytecode(this.__wbg_ptr);
+        var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]).slice();
+        wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+        return v1;
+    }
+    /**
+     * @returns {any[]}
+     */
     get varnames() {
         const ret = wasm.wasmcodeobject_varnames(this.__wbg_ptr);
         var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]).slice();
@@ -186,6 +195,15 @@ export class WasmCodeObject {
      */
     get names() {
         const ret = wasm.wasmcodeobject_names(this.__wbg_ptr);
+        var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]).slice();
+        wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
+        return v1;
+    }
+    /**
+     * @returns {any[]}
+     */
+    get constants() {
+        const ret = wasm.wasmcodeobject_constants(this.__wbg_ptr);
         var v1 = getArrayJsValueFromWasm0(ret[0], ret[1]).slice();
         wasm.__wbindgen_free(ret[0], ret[1] * 4, 4);
         return v1;
