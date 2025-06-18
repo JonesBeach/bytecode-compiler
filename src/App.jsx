@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import JsonView from '@uiw/react-json-view'
 import init, { compile } from '../pkg/memphis.js'
 
+import "./App.css"
+
 function App() {
   const [code, setCode] = useState('y = 42')
   const [error, setError] = useState('')
@@ -27,9 +29,10 @@ function App() {
   return (
     <div style={{ padding: '1rem', fontFamily: 'sans-serif' }}>
       <h1>Bytecode Compiler</h1>
+      <div className="flex-container">
       <textarea
-        rows={4}
-        cols={60}
+        rows={20}
+        cols={50}
         value={code}
         onChange={(e) => setCode(e.target.value)}
         placeholder="Enter Python code here"
@@ -37,6 +40,7 @@ function App() {
       />
       {error}
       { compiled && <JsonView value={compiled} /> }
+      </div>
     </div>
   )
 }
