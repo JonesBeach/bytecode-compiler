@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import JsonView from '@uiw/react-json-view'
 import init, { compile } from '../pkg/memphis.js'
 
 function App() {
@@ -35,12 +36,7 @@ function App() {
         style={{ fontFamily: 'monospace', fontSize: '1rem', width: '100%' }}
       />
       {error}
-      <h2>Detected Names (globals)</h2>
-      <pre>{compiled?.names.join('\n')}</pre>
-      <h2>Detected Bytecode</h2>
-      <pre>{compiled?.bytecode.join('\n')}</pre>
-      <h2>Detected Constants</h2>
-      <pre>{compiled?.constants.join('\n')}</pre>
+      { compiled && <JsonView value={compiled} /> }
     </div>
   )
 }
