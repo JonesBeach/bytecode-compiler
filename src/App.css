@@ -3,6 +3,16 @@
   gap: 2rem;
 }
 
+.left-column {
+  min-width: 40vw;
+}
+
+.json-container {
+  max-height: 80vh;
+  min-width: 40vw;
+  overflow-y: auto;
+}
+
 @media (max-width: 1024px) {
   .flex-container {
     flex-direction: column;

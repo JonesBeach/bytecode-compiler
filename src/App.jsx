@@ -30,7 +30,7 @@ function App() {
     <div style={{ padding: "1rem", fontFamily: "sans-serif" }}>
       <h1>Bytecode Compiler</h1>
       <div className="flex-container">
-        <div>
+        <div className="left-column">
           <textarea
             rows={20}
             cols={50}
@@ -41,13 +41,15 @@ function App() {
           />
           <pre>{error ? error : "Success!"}</pre>
         </div>
-        {compiled && (
-          <JsonView
-            value={compiled}
-            enableClipboard={false}
-            displayObjectSize={false}
-          />
-        )}
+        <div className="json-container">
+          {compiled && (
+            <JsonView
+              value={compiled}
+              enableClipboard={false}
+              displayObjectSize={false}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
