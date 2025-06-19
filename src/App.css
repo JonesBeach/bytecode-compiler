@@ -36,7 +36,7 @@
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
-    max-height: unset;
+    height: unset;
   }
 
   .left-column,
