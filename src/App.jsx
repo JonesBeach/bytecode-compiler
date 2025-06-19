@@ -22,7 +22,7 @@ function App() {
       setError("");
     } catch (e) {
       setCompiled(null);
-      setError(`Error: ${e.message}`);
+      setError(e.toString());
     }
   }, [code, ready]);
 
