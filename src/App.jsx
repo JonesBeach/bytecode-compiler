@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import JsonView from "@uiw/react-json-view";
 import init, { compile } from "../pkg/memphis.js";
 
+import Console from "./Console";
 import "./App.css";
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
             placeholder="Enter Python code here"
             style={{ fontFamily: "monospace", fontSize: "1rem", width: "100%" }}
           />
-          <pre>{error ? error : "Success!"}</pre>
+          <Console error={error} />
         </div>
         <div className="json-container">
           {compiled && (
