@@ -5,18 +5,18 @@ import init, { compile } from "../pkg/memphis.js";
 import Console from "./Console";
 import "./App.css";
 
-function App() {
+const App = () => {
   const [code, setCode] = useState("y = 42");
   const [error, setError] = useState("");
   const [compiled, setCompiled] = useState(null);
-  const [ready, setReady] = useState(false);
+  const [wasmLoaded, setWasmLoaded] = useState(false);
 
   useEffect(() => {
-    init().then(() => setReady(true));
+    init().then(() => setWasmLoaded(true));
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
+    if (!wasmLoaded) return;
     try {
       const compiled = compile(code);
       setCompiled(compiled);
@@ -25,35 +25,32 @@ function App() {
       setCompiled(null);
       setError(e.toString());
     }
-  }, [code, ready]);
+  }, [code, wasmLoaded]);
 
   return (
-    <div style={{ padding: "1rem", fontFamily: "sans-serif" }}>
-      <h1>Bytecode Compiler</h1>
-      <div className="flex-container">
-        <div className="left-column">
-          <textarea
-            rows={20}
-            cols={50}
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            placeholder="Enter Python code here"
-            style={{ fontFamily: "monospace", fontSize: "1rem", width: "100%" }}
+    <div className="container">
+      <div className="left-column">
+        <textarea
+          rows={20}
+          cols={50}
+          value={code}
+          onChange={(e) => setCode(e.target.value)}
+          placeholder="Enter Python code here"
+          style={{ fontFamily: "monospace", fontSize: "1rem", width: "100%" }}
+        />
+        <Console error={error} />
+      </div>
+      <div className="right-column">
+        {compiled && (
+          <JsonView
+            value={compiled}
+            enableClipboard={false}
+            displayObjectSize={false}
           />
-          <Console error={error} />
-        </div>
-        <div className="json-container">
-          {compiled && (
-            <JsonView
-              value={compiled}
-              enableClipboard={false}
-              displayObjectSize={false}
-            />
-          )}
-        </div>
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default App;
