@@ -1,1 +1,1 @@
-export { default as BytecodeCompiler } from './App'
+export { default as BytecodeCompiler } from "./App";
