@@ -48,11 +48,6 @@
     height: unset;
   }
 
-  .left-column,
-  .right-column {
-    width: 100%;
-  }
-
   .code-container {
     min-height: 60vh;
   }
