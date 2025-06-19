@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import JsonView from "@uiw/react-json-view";
 import init, { compile } from "../pkg/memphis.js";
 
 import Console from "./Console";
+import BytecodeViewer from "./BytecodeViewer";
 import { getCodeFromURL, setCodeInURL } from "./urlState";
 import "./App.css";
 
 const App = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
-  const [compiled, setCompiled] = useState(null);
+  const [codeObject, setCodeObject] = useState(null);
   const [wasmLoaded, setWasmLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,11 +24,11 @@ const App = () => {
     if (!wasmLoaded) return;
     try {
       const compiled = compile(code);
-      setCompiled(compiled);
+      setCodeObject(compiled);
       setError("");
       setCodeInURL(code);
     } catch (e) {
-      setCompiled(null);
+      setCodeObject(null);
       setError(e.toString());
     }
   }, [code, wasmLoaded]);
@@ -44,16 +44,12 @@ const App = () => {
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter Python code here"
         />
-        <Console error={error} />
+        <div className="console-area">
+          <Console error={error} />
+        </div>
       </div>
       <div className="right-column">
-        {compiled && (
-          <JsonView
-            value={compiled}
-            enableClipboard={false}
-            displayObjectSize={false}
-          />
-        )}
+        <BytecodeViewer codeObject={codeObject} />
       </div>
     </div>
   );
