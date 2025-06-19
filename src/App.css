@@ -3,34 +3,43 @@
   padding: 1rem;
   gap: 1rem;
   height: 80vh;
+  max-width: 2400px;
+  margin: 0 auto;
 }
 
 .left-column {
-  width: 40vw;
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 1rem;
 }
 
 .right-column {
-  min-width: 40vw;
+  flex: 1;
   overflow-y: auto;
   border: 1px solid black;
   border-radius: 4px;
 }
 
-.code-area {
-  font-family: monospace;
-  font-size: 1rem;
-  width: 100%;
-  min-height: 60vh;
+.code-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.console-area {
-  height: 100%;
+.console-container {
+  flex: 0.3;
   background: #e0e0e0;
   border-radius: 4px;
   overflow-y: auto;
+}
+
+.code-form {
+  flex: 1;
+  width: 100%;
+  font-family: monospace;
+  font-size: 1rem;
+  resize: none;
 }
 
 @media (max-width: 1024px) {
@@ -42,5 +51,9 @@
   .left-column,
   .right-column {
     width: 100%;
+  }
+
+  .code-container {
+    min-height: 60vh;
   }
 }

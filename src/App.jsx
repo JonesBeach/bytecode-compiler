@@ -36,15 +36,15 @@ const App = () => {
   return (
     <div className="container">
       <div className="left-column">
-        <textarea
-          className="code-area"
-          rows={20}
-          cols={50}
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-          placeholder="Enter Python code here"
-        />
-        <div className="console-area">
+        <div className="code-container">
+          <textarea
+            className="code-form"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            placeholder="Enter Python code here"
+          />
+        </div>
+        <div className="console-container">
           <Console error={error} />
         </div>
       </div>
