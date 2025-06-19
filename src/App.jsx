@@ -3,16 +3,21 @@ import JsonView from "@uiw/react-json-view";
 import init, { compile } from "../pkg/memphis.js";
 
 import Console from "./Console";
+import { getCodeFromURL, setCodeInURL } from "./urlState";
 import "./App.css";
 
 const App = () => {
-  const [code, setCode] = useState("y = 42");
+  const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [compiled, setCompiled] = useState(null);
   const [wasmLoaded, setWasmLoaded] = useState(false);
 
   useEffect(() => {
-    init().then(() => setWasmLoaded(true));
+    init().then(() => {
+      setWasmLoaded(true);
+      const initial = getCodeFromURL() || "y = 42";
+      setCode(initial);
+    });
   }, []);
 
   useEffect(() => {
@@ -21,6 +26,7 @@ const App = () => {
       const compiled = compile(code);
       setCompiled(compiled);
       setError("");
+      setCodeInURL(code);
     } catch (e) {
       setCompiled(null);
       setError(e.toString());
@@ -31,12 +37,12 @@ const App = () => {
     <div className="container">
       <div className="left-column">
         <textarea
+          className="code-area"
           rows={20}
           cols={50}
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="Enter Python code here"
-          style={{ fontFamily: "monospace", fontSize: "1rem", width: "100%" }}
         />
         <Console error={error} />
       </div>

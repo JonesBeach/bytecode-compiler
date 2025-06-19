@@ -14,6 +14,12 @@
   overflow-y: auto;
 }
 
+.code-area {
+  font-family: monospace;
+  font-size: 1rem;
+  width: 100%;
+}
+
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
