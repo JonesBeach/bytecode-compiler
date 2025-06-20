@@ -6,6 +6,13 @@ import BytecodeViewer from "./BytecodeViewer";
 import { getCodeFromURL, setCodeInURL } from "./urlState";
 import "./App.css";
 
+const INITIAL_CODE = `y = 42
+
+def foo(x, z):
+    return x + y + z
+
+foo(11,12)`;
+
 const App = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
@@ -15,7 +22,7 @@ const App = () => {
   useEffect(() => {
     init().then(() => {
       setWasmLoaded(true);
-      const initial = getCodeFromURL() || "y = 42";
+      const initial = getCodeFromURL() || INITIAL_CODE;
       setCode(initial);
     });
   }, []);
