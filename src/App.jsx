@@ -4,7 +4,7 @@ import init, { compile } from "../pkg/memphis.js";
 import Console from "./Console";
 import BytecodeViewer from "./BytecodeViewer";
 import { getCodeFromURL, setCodeInURL } from "./urlState";
-import "./App.css";
+import styles from './App.module.css';
 
 const INITIAL_CODE = `y = 42
 
@@ -41,21 +41,21 @@ const App = () => {
   }, [code, wasmLoaded]);
 
   return (
-    <div className="container">
-      <div className="left-column">
-        <div className="code-container">
+    <div className={styles.container}>
+      <div className={styles.leftColumn}>
+        <div className={styles.codeContainer}>
           <textarea
-            className="code-form"
+            className={styles.codeForm}
             value={code}
             onChange={(e) => setCode(e.target.value)}
             placeholder="Enter Python code here"
           />
         </div>
-        <div className="console-container">
+        <div className={styles.consoleContainer}>
           <Console error={error} />
         </div>
       </div>
-      <div className="right-column">
+      <div className={styles.rightColumn}>
         <BytecodeViewer codeObject={codeObject} />
       </div>
     </div>
