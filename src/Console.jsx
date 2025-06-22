@@ -1,3 +1,5 @@
+import styles from "./App.module.css";
+
 const needsExtra = (error) => error.indexOf("Unsupported feature") !== -1;
 
 const buildExtra = () => {
@@ -16,10 +18,12 @@ const Console = ({ error }) => {
   const firstLine = error ? error : "Success!";
   const secondLine = needsExtra(error) ? buildExtra() : null;
   return (
-    <pre>
-      {firstLine}
-      {secondLine}
-    </pre>
+    <div className={styles.consoleBox}>
+      <pre className={styles.consoleOutput}>
+        {firstLine}
+        {secondLine}
+      </pre>
+    </div>
   );
 };
 

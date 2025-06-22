@@ -4,7 +4,7 @@ import init, { compile } from "../pkg/memphis.js";
 import Console from "./Console";
 import BytecodeViewer from "./BytecodeViewer";
 import { getCodeFromURL, setCodeInURL } from "./urlState";
-import styles from './App.module.css';
+import styles from "./App.module.css";
 
 const INITIAL_CODE = `y = 42
 

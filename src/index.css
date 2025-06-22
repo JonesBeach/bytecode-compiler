@@ -20,12 +20,6 @@ body,
   margin: 0;
 }
 
-pre {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  padding: 0.5rem;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
