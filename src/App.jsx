@@ -13,7 +13,7 @@ def foo(x, z):
 
 foo(11,12)`;
 
-const App = () => {
+const BytecodeCompiler = ({ darkMode = false }) => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [codeObject, setCodeObject] = useState(null);
@@ -56,10 +56,10 @@ const App = () => {
         </div>
       </div>
       <div className={styles.rightColumn}>
-        <BytecodeViewer codeObject={codeObject} />
+        <BytecodeViewer darkMode={darkMode} codeObject={codeObject} />
       </div>
     </div>
   );
 };
 
-export default App;
+export default BytecodeCompiler;

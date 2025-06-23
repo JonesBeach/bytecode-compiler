@@ -18,7 +18,8 @@
 .rightColumn {
   flex: 1;
   overflow-y: auto;
-  background: white;
+  background: var(--right-bg, #fff);
+  color: var(--right-fg, #000);
   border: 1px solid black;
   border-radius: 6px;
 }
