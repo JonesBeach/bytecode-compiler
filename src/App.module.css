@@ -16,9 +16,9 @@
 
 .rightColumn {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
-  background: var(--right-bg, #fff);
-  color: var(--right-fg, #000);
   border: 1px solid black;
   border-radius: 6px;
 }
