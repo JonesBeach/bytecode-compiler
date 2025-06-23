@@ -1,8 +1,8 @@
 .outputContainer {
   flex: 1;
   font-family: monospace;
-  background: var(--right-bg, #fff);
-  color: var(--right-fg, #000);
+  background: #fff;
+  color: #000;
 }
 
 .darkMode {

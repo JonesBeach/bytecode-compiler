@@ -43,14 +43,6 @@
   border-radius: 6px;
 }
 
-.codeForm {
-  flex: 1;
-  border-radius: 6px;
-  font-family: monospace;
-  font-size: 1rem;
-  resize: none;
-}
-
 .consoleOutput {
   white-space: pre-wrap;
   background: var(--console-bg, #e0e0e0) !important;

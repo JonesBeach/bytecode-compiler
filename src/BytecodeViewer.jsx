@@ -3,7 +3,7 @@ import { darkTheme } from "@uiw/react-json-view/dark";
 import { lightTheme } from "@uiw/react-json-view/light";
 import styles from "./BytecodeViewer.module.css";
 
-const BytecodeViewer = ({ codeObject, darkMode = false }) => (
+const BytecodeViewer = ({ codeObject, darkMode }) => (
   <>
     {codeObject && (
       <JsonView
