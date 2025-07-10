@@ -5,6 +5,7 @@ import Console from "./Console";
 import BytecodeViewer from "./BytecodeViewer";
 import { getCodeFromURL, setCodeInURL } from "./urlState";
 import styles from "./App.module.css";
+import CodeForm from "./CodeForm.jsx";
 
 const INITIAL_CODE = `y = 42
 
@@ -13,7 +14,7 @@ def foo(x, z):
 
 foo(11,12)`;
 
-const App = () => {
+const BytecodeCompiler = ({ darkMode = false }) => {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [codeObject, setCodeObject] = useState(null);
@@ -44,22 +45,17 @@ const App = () => {
     <div className={styles.container}>
       <div className={styles.leftColumn}>
         <div className={styles.codeContainer}>
-          <textarea
-            className={styles.codeForm}
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            placeholder="Enter Python code here"
-          />
+          <CodeForm code={code} setCode={setCode} darkMode={darkMode} />
         </div>
         <div className={styles.consoleContainer}>
           <Console error={error} />
         </div>
       </div>
       <div className={styles.rightColumn}>
-        <BytecodeViewer codeObject={codeObject} />
+        <BytecodeViewer darkMode={darkMode} codeObject={codeObject} />
       </div>
     </div>
   );
 };
 
-export default App;
+export default BytecodeCompiler;

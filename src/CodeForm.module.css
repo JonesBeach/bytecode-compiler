@@ -1,0 +1,12 @@
+.codeForm {
+  flex: 1;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 1rem;
+  resize: none;
+}
+
+.darkMode {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
