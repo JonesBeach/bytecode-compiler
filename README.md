@@ -1,6 +1,6 @@
 # Interactive Bytecode Compiler
 
-![Bytecode Compiler](demo.gif)
+![Bytecode Compiler](https://raw.githubusercontent.com/jonesbeach/bytecode-compiler/main/demo.gif)
 
 ## Introduction
 
